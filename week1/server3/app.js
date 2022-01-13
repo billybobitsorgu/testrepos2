@@ -8,7 +8,7 @@ http.createServer(function(request, response){
     var fileName = "index.html"
 
     //load file using the filesystem
-    FileSystem.readfile(fileName, callBack)
+    fs.readFile(fileName, callBack)
 
     function callBack(err,data){
         if(err){
@@ -19,10 +19,11 @@ http.createServer(function(request, response){
             response.writeHead(200, {"Content-type":"text/html"})
             response.write(data.toString())
         }
+        response.end()
     }
 
     
-    response.end()
+    
 }).listen(port)
 
 console.log("Running on port 3000")
